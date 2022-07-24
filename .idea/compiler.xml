@@ -29,7 +29,7 @@
       <module name="common-domain" options="-parameters" />
       <module name="food-ordering-system" options="" />
       <module name="infrastructure" options="-parameters" />
-      <module name="kafka" options="-parameters" />
+      <module name="kafka" options="" />
       <module name="kafka-config-data" options="-parameters" />
       <module name="kafka-consumer" options="-parameters" />
       <module name="kafka-model" options="-parameters" />
