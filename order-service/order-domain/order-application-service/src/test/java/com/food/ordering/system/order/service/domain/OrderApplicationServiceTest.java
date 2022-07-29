@@ -11,10 +11,10 @@ import com.food.ordering.system.order.service.domain.entity.Product;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
-import com.food.ordering.system.order.service.domain.port.input.service.OrderApplicationService;
-import com.food.ordering.system.order.service.domain.port.output.repository.CustomerRepository;
-import com.food.ordering.system.order.service.domain.port.output.repository.OrderRepository;
-import com.food.ordering.system.order.service.domain.port.output.repository.RestaurantRepository;
+import com.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
+import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -144,7 +144,7 @@ public class OrderApplicationServiceTest {
                 )
                 .build();
 
-        Customer customer = new Customer();
+        Customer customer = new Customer(new CustomerId(CUSTOMER_ID));
         customer.setId(new CustomerId(CUSTOMER_ID));
 
         Restaurant restaurant = Restaurant.builder()
