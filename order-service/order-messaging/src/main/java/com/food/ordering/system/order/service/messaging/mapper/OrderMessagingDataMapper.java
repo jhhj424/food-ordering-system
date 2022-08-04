@@ -12,7 +12,7 @@ import java.util.UUID;
 @Component
 public class OrderMessagingDataMapper {
 
-    public PaymentRequestAvroModel orderPaymentEventToPaymentRequestAvroModel(OrderCreatedEvent orderCreatedEvent) {
+    public PaymentRequestAvroModel orderCreatedEventToPaymentRequestAvroModel(OrderCreatedEvent orderCreatedEvent) {
         Order order = orderCreatedEvent.getOrder();
         return PaymentRequestAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
@@ -20,12 +20,12 @@ public class OrderMessagingDataMapper {
                 .setCustomerId(order.getCustomerId().getValue().toString())
                 .setOrderId(order.getId().getValue().toString())
                 .setPrice(order.getPrice().getAmount())
-                .setCreatedAt(orderCreatedEvent.getCreateAt().toInstant())
+                .setCreatedAt(orderCreatedEvent.getCreatedAt().toInstant())
                 .setPaymentOrderStatus(PaymentOrderStatus.PENDING)
                 .build();
     }
 
-    public PaymentRequestAvroModel orderPaymentEventToPaymentRequestAvroModel(OrderCancelledEvent orderCancelledEvent) {
+    public PaymentRequestAvroModel orderCancelledEventToPaymentRequestAvroModel(OrderCancelledEvent orderCancelledEvent) {
         Order order = orderCancelledEvent.getOrder();
         return PaymentRequestAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
@@ -33,7 +33,7 @@ public class OrderMessagingDataMapper {
                 .setCustomerId(order.getCustomerId().getValue().toString())
                 .setOrderId(order.getId().getValue().toString())
                 .setPrice(order.getPrice().getAmount())
-                .setCreatedAt(orderCancelledEvent.getCreateAt().toInstant())
+                .setCreatedAt(orderCancelledEvent.getCreatedAt().toInstant())
                 .setPaymentOrderStatus(PaymentOrderStatus.CANCELLED)
                 .build();
     }
